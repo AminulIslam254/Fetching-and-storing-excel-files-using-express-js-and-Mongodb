@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box1 {
+            background-color: darkkhaki;
+            height: 30px;
+        }
+
+        #container1 {
+            margin: 80px;
+            /* background-color: red; */
+            box-shadow: 10px 10px 8px 10px #888888;
+            height: 612px;
+            width: 88%;
+        }
+
+        #box2 {
+            position: relative;
+            left: 48%;
+            top: 1000%;
+
+        }
+
+        #pg1 {
+            position: relative;
+            left: -23px;
+            top: -164px;
+        }
+
+        #pg2 {
+            position: relative;
+            left: -67px;
+            top: -164px;
+        }
+
+        #pg3 {
+            position: relative;
+            left: -101px;
+            top: -151px;
+        }
+
+        img {
+            position: relative;
+            left: -90px;
+            top: -140px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container1">
+        <div id="box1">
+            <span>Add from excel</span>
+            <div id="box2">
+                <div id="box3">
+                    <p style="color: green;" id="pg1">Thank You!</p>
+                    <img src="../public/green-check-mark.webp" alt="" style="width: 20px; height: 20px;">
+                    <p id="pg2">File uploaded Successfully</p>
+                    <p id="pg3">Your records will be proceed shortly</p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function fun1() {
+        let input1 = document.getElementById("file1");
+        if (input1.value !== "") {
+            let btn1 = document.getElementById("btn1");
+            btn1.style.display = "block";
+            let spn1 = document.getElementById("spn1");
+            spn1.style.left = "-102px"
+            let str = input1.value;
+            let finalstr = "";
+            for (let i = str.length - 1; i >= 0; i--) {
+                if (str[i] != '\\') {
+                    finalstr += str[i];
+                }
+                else {
+                    break;
+                }
+            }
+            finalstr = finalstr.split("").reverse().join("");
+            spn1.innerHTML = finalstr;
+
+        }
+    }
+
+</script>
+
+</html>

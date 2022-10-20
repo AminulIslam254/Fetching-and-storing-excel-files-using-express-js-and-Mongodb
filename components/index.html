@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        #box1 {
+            background-color: darkkhaki;
+            height: 30px;
+        }
+
+        #container1 {
+            margin: 80px;
+            /* background-color: red; */
+            box-shadow: 10px 10px 8px 10px #888888;
+            height: 612px;
+            width: 88%;
+        }
+
+        #box2 {
+            position: relative;
+            left: 48%;
+            top: 1000%;
+
+        }
+
+        #lbl1 {
+            position: relative;
+            bottom: 20px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        #spn1 {
+            position: relative;
+            left: -14px;
+            top: -16px;
+        }
+
+        #btn1 {
+            position: relative;
+            top: 29px;
+            left: -17px;
+            height: 33px;
+            width: 102px;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container1">
+        <div id="box1">
+            <span>Add from excel</span>
+            <div id="box2">
+                <form action="http://localhost:3000/data1" method="post" enctype="multipart/form-data">
+                    <label for="file1" id="lbl1">
+                        <img src="../public/upload image.jpg" alt="" style="width: 70px; height: 50px;">
+                    </label>
+                    <input type="file" name="myfile1" id="file1" style="display: none;" onchange="fun1()">
+                    <div id="spn1">Upload your file</div>
+
+                    <input type="submit" value="Submit" id="btn1" style="display: none;">
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    function fun1() {
+        let input1 = document.getElementById("file1");
+        if (input1.value !== "") {
+            let btn1 = document.getElementById("btn1");
+            btn1.style.display = "block";
+            let spn1 = document.getElementById("spn1");
+            spn1.style.left="-102px"
+            let str=input1.value;
+            let finalstr="";
+            for(let i=str.length-1;i>=0;i--)
+            {
+                if(str[i]!='\\')
+                {
+                    finalstr+=str[i];
+                }
+                else
+                {
+                    break;
+                }
+            }
+            finalstr=finalstr.split("").reverse().join("");
+            spn1.innerHTML = finalstr;
+
+        }
+    }
+
+</script>
+
+</html>
